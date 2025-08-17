@@ -22,22 +22,13 @@ function runCommand(input, steps) {
   }
 }
 
-function executeSteps(predefined = [], steps = []) {
-  if (predefined.length) {
-    const input = predefined.shift();
-    runCommand(input, steps);
-    return executeSteps(predefined, steps);
+function executeSteps(scripted = [], steps = []) {
+  if (!scripted.length) {
+    return cy.wrap(steps);
   }
-
-  return cy
-    .prompt('Enter a Cypress command (e.g., "visit https://example.com") or leave blank to finish:')
-    .then((input) => {
-      if (!input) {
-        return steps;
-      }
-      runCommand(input, steps);
-      return executeSteps(predefined, steps);
-    });
+  const input = scripted.shift();
+  runCommand(input, steps);
+  return executeSteps(scripted, steps);
 }
 
 const SCRIPTED_STEPS = [

@@ -1,0 +1,17 @@
+{
+  "name": "reproduction_agent",
+  "version": "1.0.0",
+  "description": "Cypress agent to reproduce bugs via cy.prompt",
+  "main": "index.js",
+  "scripts": {
+    "agent": "cypress open",
+    "test": "echo \"No tests\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^13.0.0"
+  }
+}

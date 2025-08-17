@@ -1,6 +1,6 @@
 # reproduction_agent
 
-This project sets up a simple Cypress agent that uses `cy.prompt` to capture user-provided reproduction steps and generate a test file.
+This project sets up a simple Cypress agent that runs a scripted list of steps defined in code and generates a test file.
 
 ## Setup
 
@@ -13,5 +13,8 @@ npm install
 ```bash
 npm run agent
 ```
+The spec runs the steps listed in `SCRIPTED_STEPS` inside
+`cypress/e2e/bug_repro_agent.cy.js`. You can modify this array to describe the
+actions needed to reproduce your bug. The recorded commands are saved to
+`cypress/e2e/generated_repro.cy.js`.
 
-The test will prompt for Cypress commands (e.g., `visit https://example.com`, `click #selector`, `type #input some text`). Submit an empty response to finish and automatically generate `cypress/e2e/generated_repro.cy.js` with the recorded steps.

@@ -1,1 +1,2 @@
-require('./commands');
+// No custom commands are required for predefined steps.
+
